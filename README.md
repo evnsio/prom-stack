@@ -9,6 +9,31 @@ This repo contains a quick start for running a development instance of Prometheu
 * Alertmanager
 * Grafana
 
+```
+               +--------------+
+               |              |
+               |   Grafana    |
+               |              |
+               +--------------+
+                      |
+                      | datasource
+                      |
+               +------v-------+           +--------------+
+         +-----+              |           |              |
+  scrape |     |  Prometheus  +-----------> AlertManager |
+         +----->    Server    |   push    |              |
+               |              |   alerts  |              |
+               +--------------+           +--------------+
+                      |
+                      | scrape
+                      |
+               +------v-------+
+               |              |
+               | Pushgateway  |
+               |              |
+               +--------------+
+```
+
 ### How do I use it?
 
 1. Clone the repo.
