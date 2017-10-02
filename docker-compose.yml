@@ -1,0 +1,31 @@
+version: "3"
+services:
+
+  pushgateway:
+    image: prom/pushgateway
+    ports:
+      - 9091:9091
+
+  prometheus:
+    image: prom/prometheus
+    command: -config.file=/etc/prometheus/prometheus.yml -alertmanager.url=http://alertmanager:9093
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/alerts/:/etc/prometheus/rules.d/
+
+  grafana-ui:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
+  alertmanager:
+    image: prom/alertmanager
+    command: "-config.file=/etc/alertmanager/alertmanager.yml"
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
