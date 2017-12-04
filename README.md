@@ -1,8 +1,8 @@
-## Prom-Stack
+# Prom-Stack
 
 This repo contains a quick start for running a development instance of Prometheus.  
 
-### What's Included?
+## What's Included?
 
 * Prometheus Server
 * Push Gateway
@@ -34,7 +34,7 @@ This repo contains a quick start for running a development instance of Prometheu
                +--------------+
 ```
 
-### How do I use it?
+## How do I use it?
 
 1. Clone the repo.
 1. Navigate to the directory and run `make up`
@@ -43,18 +43,18 @@ This repo contains a quick start for running a development instance of Prometheu
 1. Go to [http://localhost:9093](http://localhost:9093) for Alertmanager.
 1. Go to [http://localhost:3000](http://localhost:3000) for Grafana.
 
-## Guides
-### Add a Scrape Target
+# Guides
+## Add a Scrape Target
 
 To add a new scrape target, edit the `scrape_configs` section of `/prometheus/prometheus.yml` and run `make reload-prom`
 
 See [here](https://prometheus.io/docs/operating/configuration/#%3Cscrape_config%3E) for more details on scrape configs.
 
-### Add an alert
+## Add an alert
 
 To add a new alert, create or edit a `*.rules` file in the `prometheus/alerts` directory and run `make reload-prom`
 
-### Use the Push Gateway
+## Use the Push Gateway
 
 The Pushgateway can be used as an intermediary to push metrics, where the Prometheus pull model doesn't fit.  Examples
 of this include short lived processes or batch jobs.
