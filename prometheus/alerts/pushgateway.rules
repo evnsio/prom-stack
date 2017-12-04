@@ -1,9 +1,0 @@
-ALERT PushgatewayDown
-  IF up{job="pushgateway"} == 0
-  FOR 1s
-  LABELS {
-    severity="critical",
-  }
-  ANNOTATIONS {
-    description="pushgateway is down",
-  }
